@@ -6,7 +6,7 @@
 #    By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/13 17:29:52 by psuanpro          #+#    #+#              #
-#    Updated: 2023/02/14 00:43:50 by psuanpro         ###   ########.fr        #
+#    Updated: 2023/02/14 21:49:30 by psuanpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRCS = phonebook.cpp \
-		contact.cpp
+		contact.cpp \
+		main.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 BRED =\033[1;31m

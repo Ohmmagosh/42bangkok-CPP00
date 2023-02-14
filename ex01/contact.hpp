@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:52:58 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/13 23:55:44 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/14 23:21:40 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,21 @@
 # define CONTACT_H
 
 #include <iostream>
+#include <string>
 
 class	Contact {
 	private:
-		int a;
-		int b;
+		int			_number;
+		std::string	_fname;
+		std::string	_lname;
+		std::string	_nickname;
+		std::string	_phonenumber;
 	public:
-		Contact(int a, int b) {
-			this->a = a;
-			this->b = b;
-		}
-		~Contact() {
-			std::cout << "Goodbye Contact" << std::endl;
-		}
-		void PrintOut() {
-			std::cout << "A " << this->a << std::endl;
-			std::cout << "B " << this->b << std::endl;
-		}
-		void setTer(int a, int b) {
-			this->a = a;
-			this->b = b;
-		}
-		void swap() {
-			int	tmp;
-			tmp = this->a;
-			this->a = this->b;
-			this->b = tmp;
-		}
+		Contact(void);
+		~Contact(void);
+		void	CleanUp(void);
+		void	SetContact(std::string fn, std::string ln, std::string nick, std::string pn ,int num);
+		void	GetContact(void) const;
 };
 
 #endif
