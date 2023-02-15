@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:07:00 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/14 21:52:32 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 03:03:02 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@
 class	PhoneBook {
 	private:
 		static int	_a;
-		Contact		*contacts;
+		int			size;
+		Contact		contacts[8];
 	public:
 		PhoneBook(void);
 		~PhoneBook();
-		void	addContract(std::string fn, std::string ln, std::string nick, std::string pn);
+		void	addContact(void);
+		void	getContact(int index);
+		void	getAllContact(std::string input);
+		void	showHeader();
 };
 
 #endif

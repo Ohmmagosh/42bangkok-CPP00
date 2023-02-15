@@ -6,29 +6,11 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:31 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/14 23:28:28 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 03:03:00 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
-
-void	AddMethod(PhoneBook book) {
-	std::string	fn;
-	std::string	ln;
-	std::string	nick;
-	std::string	pn;
-
-	std::cout << YEL << "First name : " << RES;
-	std::cin >> fn;
-	std::cout << YEL << "Last name :" << RES;
-	std::cin >> ln;
-	std::cout << YEL << "Nickname :" << RES;
-	std::cin >> nick;
-	std::cout << YEL << "Phone number :" << RES;
-	std::cin >> pn;
-
-	book.addContract(fn, ln, nick, pn);
-}
 
 void	StrUpper(std::string &str) {
 	for (int i = 0; str[i]; i++)
@@ -54,9 +36,10 @@ int	main(void) {
 			break;
 		}else if (!input.compare("ADD")){
 			std::cout << input << std::endl;
-			AddMethod(book);
+			book.addContact();
 		}else if (!input.compare("SEARCH")){
 			std::cout << input << std::endl;
+			book.getAllContact(input);
 		}else {
 			std::cout << BRED << "Error : command not found" << RES << std::endl;
 		}
@@ -64,3 +47,4 @@ int	main(void) {
 	}
 	return (0);
 }
+
