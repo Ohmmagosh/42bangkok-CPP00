@@ -5,16 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/13 17:31:09 by psuanpro          #+#    #+#              #
-#    Updated: 2023/02/16 22:06:02 by psuanpro         ###   ########.fr        #
+#    Created: 2023/02/16 22:06:13 by psuanpro          #+#    #+#              #
+#    Updated: 2023/02/16 23:08:35 by psuanpro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = megaphone
+NAME = JobOfYourDreams
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = megaphone.cpp
+SRCS = tests.cpp \
+		Account.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 BRED =\033[1;31m
