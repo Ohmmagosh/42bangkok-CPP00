@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:06:53 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 03:05:18 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:42:52 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,51 @@ void	PhoneBook::addContact(){
 	PhoneBook::_a = (PhoneBook::_a + 1) % 8;
 }
 
-void	PhoneBook::getAllContact(std::string input){
-	showHeader();
-	for (int i = 0; i < 4 && i < this->size; i++)
-		getContact(i);
+void	PhoneBook::getAllContact(void){
+	showHeader(1);
+	for (int i = 0; i < this->size; i++)
+		getContact(i, 1);
 }
 
-void	PhoneBook::getContact(int index){
-	contacts[index].getContact(index);
+void	PhoneBook::getContact(int index, int mode){
+	contacts[index].getAllContact(index, mode);
+	if (mode == 0){
+		std::cout << " --- ------------ ------------ ------------ ------------ ------------ " << std::endl;
+	}else if (mode == 1){
+		std::cout << " --- ------------ ------------ ------------ " << std::endl;
+	}
 }
 
-void	PhoneBook::showHeader(){
-	std::cout << YEL << "                                SEARCH                                     " << RES << std::endl;
-	std::cout << " ___ ___________ ____________ ____________ ___________ ____________ " << std::endl;
-	std::cout << "| No |first_name|  last_name |  nickname  |  phone    |   srecret  |" << std::endl;
-	std::cout << " --- ----------- ------------ ------------ ----------- ------------ " << std::endl;
-	// ____ ____________ _____________ _____________ ______________ ____________
-	//| No | first_name |  last_name  |   nickname  |     phone    |   srecret  |
-	// ---- ----------- ------------- -------------- -------------- ------------
+void	PhoneBook::showHeader(int mode){
+	if (mode == 0) {
+		std::cout << YEL << "                                SEARCH                                     " << RES << std::endl;
+		std::cout << " ___ ____________ ____________ ____________ ____________ ____________ " << std::endl;
+		std::cout << "|No.| first_name | last_name  |  nickname  |   phone    |  srecret   |" << std::endl;
+		std::cout << " --- ------------ ------------ ------------ ------------ ------------ " << std::endl;
+	}else if (mode == 1) {
+		std::cout << YEL << "                  SEARCH                    " << RES << std::endl;
+		std::cout << " ___ ____________ ____________ ____________ " << std::endl;
+		std::cout << "|No.| first_name | last_name  |  nickname  |" << std::endl;
+		std::cout << " --- ------------ ------------ ------------ " << std::endl;
+	}
 }
 
+void	PhoneBook::searchContact(void){
+	std::string	enter;
+	int			index;
+	getAllContact();
+	std::cout << YEL << "Enter index of Contact : " << RES << std::endl;
+	std::getline(std::cin, enter);
+	index = std::stoi(enter);
+	if (index == 0 || index > this->size){
+		std::cout << RED << "Error : no contact!!!" << RES << std::endl;
+		return ;
+	}
+	showHeader(0);
+	getContact(index - 1, 0);
+}
+void	PhoneBook::showUsage(){
+	std::cout << YEL << "                 USE                  " << RES << std::endl;
+	std::cout <<        "     [SEARCH]    [ADD]    [EXIT]      " << std::endl;
+}
 int	PhoneBook::_a = 0;

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:31 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 03:03:00 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:47:51 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(void) {
 	PhoneBook	book;
 
 	std::cout << GRN << "PHONE BOOK" << RES << std::endl;
+	book.showUsage();
 	for (;;) {
 		std::cout << YEL << "CMD : " << RES;
 		std::getline(std::cin, input);
@@ -38,8 +39,7 @@ int	main(void) {
 			std::cout << input << std::endl;
 			book.addContact();
 		}else if (!input.compare("SEARCH")){
-			std::cout << input << std::endl;
-			book.getAllContact(input);
+			book.searchContact();
 		}else {
 			std::cout << BRED << "Error : command not found" << RES << std::endl;
 		}

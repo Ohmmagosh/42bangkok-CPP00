@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:52:58 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 01:32:14 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:15:54 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ class	Contact {
 		~Contact(void);
 		void	cleanUp(void);
 		void	setContact(std::string fn, std::string ln, std::string nick, std::string pn , std::string dk,int num);
-		void	getContact(int index) const;
+		void	getAllContact(int index, int mode) const;
+
 };
 
 #endif
