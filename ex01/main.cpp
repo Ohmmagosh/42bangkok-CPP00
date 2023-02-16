@@ -6,13 +6,13 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 14:32:31 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 16:47:51 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:16:37 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-void	StrUpper(std::string &str) {
+void	strUpper(std::string &str) {
 	for (int i = 0; str[i]; i++)
 	{
 		if (str[i] >= 'a' && str[i] <= 'z')
@@ -29,8 +29,9 @@ int	main(void) {
 	book.showUsage();
 	for (;;) {
 		std::cout << YEL << "CMD : " << RES;
-		std::getline(std::cin, input);
-		StrUpper(input);
+		if (!std::getline(std::cin, input))
+			return (0);
+		strUpper(input);
 		if (!input.compare("EXIT")){
 			std::cout << BRED << "EXIT" << RES << std::endl;
 			input.clear();

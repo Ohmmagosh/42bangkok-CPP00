@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:06:53 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 16:42:52 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 22:01:57 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,21 @@ void	PhoneBook::addContact(){
 	std::string	pn;
 	std::string	dk;
 
-	std::cout << YEL << "First name : " << RES;
-	std::getline(std::cin, fn);
-	std::cout << YEL << "Last name :" << RES;
-	std::getline(std::cin, ln);
-	std::cout << YEL << "Nickname :" << RES;
-	std::getline(std::cin, nick);
+	std::cout << YEL << "First name   :" << RES;
+	if (!std::getline(std::cin, fn))
+		return ;
+	std::cout << YEL << "Last name    :" << RES;
+	if (!std::getline(std::cin, ln))
+		return ;
+	std::cout << YEL << "Nickname     :" << RES;
+	if (!std::getline(std::cin, nick))
+		return ;
 	std::cout << YEL << "Phone number :" << RES;
-	std::getline(std::cin, pn);
-	std::cout << YEL << "Dark srecret :" << RES;
-	std::getline(std::cin, dk);
+	if (!std::getline(std::cin, pn))
+		return ;
+	std::cout << YEL << "Dark secret  :" << RES;
+	if (!std::getline(std::cin, dk))
+		return ;
 	this->contacts[PhoneBook::_a].setContact(fn, ln, nick, pn, dk, PhoneBook::_a);
 	if (this->size < 8)
 		this->size++;
@@ -58,32 +63,42 @@ void	PhoneBook::getAllContact(void){
 void	PhoneBook::getContact(int index, int mode){
 	contacts[index].getAllContact(index, mode);
 	if (mode == 0){
-		std::cout << " --- ------------ ------------ ------------ ------------ ------------ " << std::endl;
+		std::cout << " ---------- ------------ ------------ ------------ ------------ ------------ " << std::endl;
 	}else if (mode == 1){
-		std::cout << " --- ------------ ------------ ------------ " << std::endl;
+		std::cout << " ---------- ------------ ------------ ------------ " << std::endl;
 	}
 }
 
 void	PhoneBook::showHeader(int mode){
 	if (mode == 0) {
 		std::cout << YEL << "                                SEARCH                                     " << RES << std::endl;
-		std::cout << " ___ ____________ ____________ ____________ ____________ ____________ " << std::endl;
-		std::cout << "|No.| first_name | last_name  |  nickname  |   phone    |  srecret   |" << std::endl;
-		std::cout << " --- ------------ ------------ ------------ ------------ ------------ " << std::endl;
+		std::cout << " __________ ____________ ____________ ____________ ____________ ____________ " << std::endl;
+		std::cout << "|  index   | first_name | last_name  |  nickname  |   phone    |   secret   |" << std::endl;
+		std::cout << " ---------- ------------ ------------ ------------ ------------ ------------ " << std::endl;
 	}else if (mode == 1) {
-		std::cout << YEL << "                  SEARCH                    " << RES << std::endl;
-		std::cout << " ___ ____________ ____________ ____________ " << std::endl;
-		std::cout << "|No.| first_name | last_name  |  nickname  |" << std::endl;
-		std::cout << " --- ------------ ------------ ------------ " << std::endl;
+		std::cout << YEL << "                       SEARCH                      " << RES << std::endl;
+		std::cout << 		" __________ ____________ ____________ ____________ " << std::endl;
+		std::cout << 		"|  index   | first_name | last_name  |  nickname  |" << std::endl;
+		std::cout << 		" ---------- ------------ ------------ ------------ " << std::endl;
 	}
 }
 
 void	PhoneBook::searchContact(void){
 	std::string	enter;
 	int			index;
+
+	if (this->size == 0){
+		std::cout << YEL << "there is no contact" << RES << std::endl;
+		return ;
+	}
 	getAllContact();
-	std::cout << YEL << "Enter index of Contact : " << RES << std::endl;
-	std::getline(std::cin, enter);
+	std::cout << YEL << "Enter index of Contact : " << RES;
+	if (!std::getline(std::cin, enter))
+		return ;
+	if (!allStrIsDigit(enter)){
+		std::cout << RED << "Error : input!!!" << RES << std::endl;
+		return ;
+	}
 	index = std::stoi(enter);
 	if (index == 0 || index > this->size){
 		std::cout << RED << "Error : no contact!!!" << RES << std::endl;
@@ -93,7 +108,15 @@ void	PhoneBook::searchContact(void){
 	getContact(index - 1, 0);
 }
 void	PhoneBook::showUsage(){
-	std::cout << YEL << "                 USE                  " << RES << std::endl;
+	std::cout << YEL << "                 USEAGE                  " << RES << std::endl;
 	std::cout <<        "     [SEARCH]    [ADD]    [EXIT]      " << std::endl;
+}
+
+bool	PhoneBook::allStrIsDigit(std::string str){
+	for(int c = 0; str[c]; c++) {
+		if (!std::isdigit(str[c]))
+			return false;
+	}
+	return true;
 }
 int	PhoneBook::_a = 0;

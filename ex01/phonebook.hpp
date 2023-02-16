@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:07:00 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 16:38:55 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 20:58:02 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class	PhoneBook {
 		void	showHeader(int mode);
 		void	searchContact(void);
 		void	showUsage(void);
+		bool	allStrIsDigit(std::string str);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: psuanpro <Marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 22:53:01 by psuanpro          #+#    #+#             */
-/*   Updated: 2023/02/16 16:13:17 by psuanpro         ###   ########.fr       */
+/*   Updated: 2023/02/16 21:40:45 by psuanpro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,18 @@ void	Contact::setContact(std::string fn, std::string ln, std::string nick, std::
 
 void	Contact::getAllContact(int index, int mode) const {
 	if (mode == 0){
-		std::cout << "| " << index + 1 << " | " ;
-		std::cout << this->_fname.substr(0, 10) << " | ";
-		std::cout << this->_lname.substr(0, 10) << " | ";
-		std::cout << this->_nickname.substr(0,10) << " | ";
-		std::cout << this->_phonenumber.substr(0, 10) << " | ";
-		std::cout << this->_darksrecret.substr(0, 10) << " |" << std::endl;
+		std::cout << "|" << std::setw(10) << index + 1 << "| " ;
+		std::cout << std::setw(10) << this->_fname.substr(0, 10) << " | ";
+		std::cout << std::setw(10) << this->_lname.substr(0, 10) << " | ";
+		std::cout << std::setw(10) << this->_nickname.substr(0,10) << " | ";
+		std::cout << std::setw(10) << this->_phonenumber.substr(0, 10) << " | ";
+		std::cout << std::setw(10) << this->_darksrecret.substr(0, 10) << " |" << std::endl;
 	} else if (mode == 1) {
-		std::cout << "| " << index + 1 << " | " ;
-		std::cout << this->_fname.substr(0, 10) << " | ";
-		std::cout << this->_lname.substr(0, 10) << " | ";
-		std::cout << this->_nickname.substr(0,10) << " | " << std::endl;
+		std::cout << "|" << std::setw(10) << index + 1 << "| " ;
+		std::cout << std::setw(10) << this->_fname.substr(0, 10) << " | ";
+		std::cout << std::setw(10) << this->_lname.substr(0, 10) << " | ";
+		std::cout << std::setw(10) << this->_nickname.substr(0,10) << " |" << std::endl;
 	}
 }
 
+//|         1|  23456789| 123456789|  23456789|
